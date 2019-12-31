@@ -9,7 +9,7 @@ impl Formatter {
    }
    
    pub fn prepend_depth(&mut self, depth: usize) {
-      for i in 0..depth {
+      for _ in 0..depth {
          self.write("   ");
       }
    }
