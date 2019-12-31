@@ -3,9 +3,9 @@ use super::*;
 #[derive(Clone)]
 pub struct HtmlTag {
    name: String,
+   paired: bool,
    attributes: Vec<Attr>,
    style: Vec<Prop>,
-   paired: bool,
    children: Vec<Element>,
 }
 
@@ -13,9 +13,9 @@ impl HtmlTag {
    pub fn paired<N: Into<String>>(name: N, children: &[Element]) -> HtmlTag {
       HtmlTag {
          name: name.into(),
+         paired: true,
          attributes: vec![],
          style: vec![],
-         paired: true,
          children: children.to_vec(),
       }
    }
@@ -23,9 +23,9 @@ impl HtmlTag {
    pub fn unpaired<N: Into<String>>(name: N) -> HtmlTag {
       HtmlTag {
          name: name.into(),
+         paired: false,
          attributes: vec![],
          style: vec![],
-         paired: false,
          children: vec![],
       }
    }
