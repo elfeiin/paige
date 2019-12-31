@@ -12,6 +12,11 @@ use tag::*;
 mod traits;
 use traits::*;
 
+pub enum Markup {
+   Tag(Tag),
+   Text(String)
+}
+
 pub enum TagType {
    Paired(Vec<Markup>),
    Unpaired,
