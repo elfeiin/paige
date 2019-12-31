@@ -25,9 +25,18 @@ impl Tag {
          children: TagType::Unpaired,
       }
    }
+   
+   fn add(&mut self, child: Markup) -> Result<(), &str> {
+      
+      if let TagType::Paired(children) = &mut self.children {
+         children.push(child);
+         Ok(())
+      } else {
+         Err("Unpaired TagType cannot have children.")
+      }
+      
+   }
 }
-
-// TODO: impl IsHtmlTag for Tag
 
 impl std::fmt::Display for Tag {
    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -57,11 +66,6 @@ impl std::fmt::Display for Tag {
       Ok(())
       
    }
-}
-
-pub enum TagType {
-   Paired(Vec<Markup>),
-   Unpaired,
 }
 
 pub enum TagName {

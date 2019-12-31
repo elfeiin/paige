@@ -1,4 +1,4 @@
-#![allow(dead_code, non_camel_case_types)]
+#![allow(dead_code, non_camel_case_types, unused_imports)]
 
 mod props;
 use props::*;
@@ -6,46 +6,17 @@ use props::*;
 mod attrs;
 use attrs::*;
 
+mod tagtype;
+use tagtype::*;
+
 mod tag;
 use tag::*;
-
-mod traits;
-use traits::*;
 
 mod markup;
 use markup::*;
 
-pub struct Page {
-   children: Vec<Markup>,
-}
-
-impl IsHtmlTag for Page {
-   fn add(&mut self, child: Markup) {
-      self.children.push(child);
-   }
-}
-
-impl Page {
-   pub fn new() -> Self {
-      Page {
-         children: vec!(),
-      }
-   }
-}
+mod page;
+use page::*;
 
 #[cfg(test)]
-mod tests {
-   
-   use super::*;
-   
-   #[test]
-   fn it_works() {
-      
-      // TODO: Write test that makes a basic html page.
-      
-      let page = Page::new();
-      
-      
-      
-   }
-}
+mod tests;
