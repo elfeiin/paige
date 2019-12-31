@@ -1,14 +1,21 @@
 use super::*;
 
 #[test]
-fn it_works() {
+fn print_bare_html_tag() {
    
-   // TODO: Write test that makes a basic html page.
+   use TagName::*;
    
-   let mut page = Page::new();
-   let doc_type = HtmlTag::unpaired(TagName::DOCTYPE);
+   let page = Page::new(
+      &[
+         
+         El::paired(Html, &[
+            
+            
+            
+         ])
+      ]
+   );
    
-   
-   
+   println!("{}", page);
    
 }

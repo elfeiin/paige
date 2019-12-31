@@ -9,8 +9,8 @@ use attrs::*;
 mod tag;
 use tag::*;
 
-mod element;
-use element::*;
+mod el;
+use el::*;
 
 mod page;
 use page::*;
