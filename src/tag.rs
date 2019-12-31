@@ -7,6 +7,8 @@ pub struct Tag {
    children: TagType,
 }
 
+// TODO: impl IsHtmlTag for Tag
+
 impl std::fmt::Display for Tag {
    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       
