@@ -47,7 +47,6 @@ impl std::fmt::Display for Tag {
 }
 
 pub enum TagName {
-   COMMENT,
    DOCTYPE,
    a,
    abbr,
@@ -171,7 +170,6 @@ pub enum TagName {
 impl TagName {
    pub fn to_str(&self) -> &str {
       match self {
-         TagName::COMMENT => "COMMENT",
          TagName::DOCTYPE => "DOCTYPE",
          TagName::a => "a",
          TagName::abbr => "abbr",
