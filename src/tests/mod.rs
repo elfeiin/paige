@@ -3,14 +3,18 @@ use super::*;
 #[test]
 fn print_bare_html_tag() {
    
-   use TagName::*;
+   use Tag::*;
    
    let page = Page::new(
       &[
          
-         El::paired(Html, &[
+         Up::paired(Html, &[
             
-            
+            Up::paired(Head, &[
+               
+               
+               
+            ])
             
          ])
       ]

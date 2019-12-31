@@ -1,19 +1,28 @@
 use super::*;
 
 pub struct Page {
-   children: Vec<El>,
+   children: Vec<Up>,
 }
 
 impl Page {
-   pub fn new(children: &[El]) -> Self {
+   pub fn new(children: &[Up]) -> Self {
       Page {
          children: children.to_vec(),
       }
    }
    
-   fn add(&mut self, child: El) {
+   pub fn add(&mut self, child: Up) {
       self.children.push(child);
    }
+   
+   pub fn format(make_pretty: bool) -> String {
+      if make_pretty {
+         String::new()
+      } else {
+         String::new()
+      }
+   }
+   
 }
 
 impl std::fmt::Display for Page {
