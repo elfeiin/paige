@@ -1,47 +1,51 @@
 use super::*;
 
-pub struct Tag {
-   tag_name: TagName,
+#[derive(Clone)]
+pub struct HtmlTag {
+   name: String,
    attributes: Vec<Attr>,
    style: Vec<Prop>,
-   children: TagType,
+   paired: bool,
+   children: Vec<Element>,
 }
 
-impl Tag {
-   pub fn new_paired(tag_name: TagName) -> Self {
-      Tag {
-         tag_name,
-         attributes: vec!(),
-         style: vec!(),
-         children: TagType::Paired(vec!()),
+impl HtmlTag {
+   pub fn paired<N: Into<String>>(name: N, children: &[Element]) -> HtmlTag {
+      HtmlTag {
+         name: name.into(),
+         attributes: vec![],
+         style: vec![],
+         paired: true,
+         children: children.to_vec(),
       }
    }
-   
-   pub fn new_unpaired(tag_name: TagName) -> Self {
-      Tag {
-         tag_name,
-         attributes: vec!(),
-         style: vec!(),
-         children: TagType::Unpaired,
+
+   pub fn unpaired<N: Into<String>>(name: N) -> HtmlTag {
+      HtmlTag {
+         name: name.into(),
+         attributes: vec![],
+         style: vec![],
+         paired: false,
+         children: vec![],
       }
    }
-   
-   fn add(&mut self, child: Markup) -> Result<(), &str> {
-      
-      if let TagType::Paired(children) = &mut self.children {
-         children.push(child);
-         Ok(())
-      } else {
-         Err("Unpaired TagType cannot have children.")
+
+   pub fn add_child(&mut self, child: Element) {
+      match self.paired {
+         true => self.children.push(child),
+         false => panic!("Unpaired tags cannot have children"),
       }
-      
+   }
+
+   pub fn add_attribute(&mut self, attribute: Attr) {
+      self.attributes.push(attribute);
    }
 }
 
-impl std::fmt::Display for Tag {
+impl std::fmt::Display for HtmlTag {
    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       
-      write!(f, "\n<{}", self.tag_name.to_str())?;
+      write!(f, "\n<{}", self.name)?;
       
       if self.attributes.len() > 0 {
          write!(f, "{}", self.attributes.iter().map(|a| format!("{}", a) ).collect::<Vec<String>>().join(" "))?;
@@ -53,13 +57,13 @@ impl std::fmt::Display for Tag {
       
       write!(f, ">")?;
       
-      if let TagType::Paired(children) = &self.children {
+      if self.paired {
          
-         for child in children.iter() {
+         for child in self.children.iter() {
             write!(f, "{}", child)?;
          }
          
-         write!(f, "</{}>", self.tag_name.to_str())?;
+         write!(f, "</{}>", self.name)?;
          
       }
       

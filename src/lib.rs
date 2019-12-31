@@ -6,9 +6,6 @@ use props::*;
 mod attrs;
 use attrs::*;
 
-mod tagtype;
-use tagtype::*;
-
 mod tag;
 use tag::*;
 

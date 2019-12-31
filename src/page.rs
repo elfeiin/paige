@@ -1,7 +1,7 @@
 use super::*;
 
 pub struct Page {
-   children: Vec<Markup>,
+   children: Vec<Element>,
 }
 
 impl Page {
@@ -11,7 +11,7 @@ impl Page {
       }
    }
    
-   fn add(&mut self, child: Markup) {
+   fn add(&mut self, child: Element) {
       self.children.push(child);
    }
 }

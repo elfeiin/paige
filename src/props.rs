@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct Prop {
    prop_name: PropName,
    value: String,
@@ -14,6 +15,7 @@ impl std::fmt::Display for Prop {
    }
 }
 
+#[derive(Clone)]
 pub enum PropName {
    align_content,
    align_items,

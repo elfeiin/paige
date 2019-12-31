@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct Attr {
    attr_name: AttrName,
    value: String,
@@ -14,6 +15,7 @@ impl std::fmt::Display for Attr {
    }
 }
 
+#[derive(Clone)]
 pub enum AttrName {
    accept,
    accept_charset,
