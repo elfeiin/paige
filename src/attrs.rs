@@ -1,7 +1,20 @@
 #[derive(Clone)]
 pub struct Attr {
-   attr_name: AttrName,
+   name: String,
    value: String,
+}
+
+impl Attr {
+   pub fn new<N: Into<String>>(name: N, value: String) -> Self {
+      Attr {
+         name: name.into(),
+         value: value
+      }
+   }
+   
+   pub fn value(&mut self, value: String) {
+      self.value = value;
+   }
 }
 
 impl std::fmt::Display for Attr {
@@ -9,7 +22,7 @@ impl std::fmt::Display for Attr {
       write!(
          f, 
          "{}='{}'",
-         self.attr_name.to_str(),
+         self.name,
          self.value
       )
    }
@@ -187,8 +200,8 @@ pub enum AttrName {
    wrap,
 }
 
-impl AttrName {
-   pub fn to_str(&self) -> &str {
+impl std::convert::Into<String> for AttrName {
+   fn into(self) -> String {
       match self {
          AttrName::accept => "accept",
          AttrName::accept_charset => "accept-charset",
@@ -358,6 +371,6 @@ impl AttrName {
          AttrName::value => "value",
          AttrName::width => "width",
          AttrName::wrap => "wrap",
-      }
+      }.into()
    }
 }

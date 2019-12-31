@@ -1,7 +1,20 @@
 #[derive(Clone)]
 pub struct Prop {
-   prop_name: PropName,
+   name: String,
    value: String,
+}
+
+impl Prop {
+   pub fn new<N: Into<String>>(name: N, value: String) -> Self {
+      Prop {
+         name: name.into(),
+         value: value
+      }
+   }
+   
+   pub fn value(&mut self, value: String) {
+      self.value = value;
+   }
 }
 
 impl std::fmt::Display for Prop {
@@ -9,7 +22,7 @@ impl std::fmt::Display for Prop {
       write!(
          f, 
          "{}: {};",
-         self.prop_name.to_str(),
+         self.name,
          self.value
       )
    }
@@ -241,8 +254,8 @@ pub enum PropName {
    z_index,
 }
 
-impl PropName {
-   pub fn to_str(&self) -> &str {
+impl std::convert::Into<String> for PropName {
+   fn into(self) -> String {
       match self {
          PropName::align_content => "align-content",
          PropName::align_items => "align-items",
@@ -466,6 +479,6 @@ impl PropName {
          PropName::word_wrap => "word-wrap",
          PropName::writing_mode => "writing-mode",
          PropName::z_index => "z-index",
-      }
+      }.into()
    }
 }

@@ -193,8 +193,8 @@ pub enum TagName {
    wbr,
 }
 
-impl TagName {
-   pub fn to_str(&self) -> &str {
+impl std::convert::Into<String> for TagName {
+   fn into(self) -> String {
       match self {
          TagName::DOCTYPE => "DOCTYPE",
          TagName::a => "a",
@@ -314,6 +314,6 @@ impl TagName {
          TagName::var => "var",
          TagName::video => "video",
          TagName::wbr => "wbr",
-      }
+      }.into()
    }
 }
