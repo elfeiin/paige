@@ -1,10 +1,10 @@
 #![allow(dead_code, non_camel_case_types)]
 
-mod property;
-use property::*;
+mod props;
+use props::*;
 
-mod attribute;
-use attribute::*;
+mod attrs;
+use attrs::*;
 
 mod tag;
 use tag::*;
