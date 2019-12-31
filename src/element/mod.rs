@@ -1,3 +1,5 @@
+use super::*;
+
 mod attributes;
 pub use attributes::*;
 
@@ -32,6 +34,24 @@ impl Up {
 
    pub fn unpaired<N: Into<String>>(name: N) -> Self {
       Up::El(Element::unpaired(name))
+   }
+   
+   pub fn format(&self, mut f: Formatter, depth: usize, make_pretty: bool) -> Formatter {
+      
+      match self {
+         Up::El(el) => {
+            f = el.format(f, depth, make_pretty)
+         },
+         Up::Text(text) => {
+            if make_pretty {
+               f.prepend_depth(depth);
+            }
+            
+            f.write(text);
+         },
+      }
+      
+      f
    }
 }
 

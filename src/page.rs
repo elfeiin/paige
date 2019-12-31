@@ -15,12 +15,20 @@ impl Page {
       self.children.push(child);
    }
    
-   pub fn format(make_pretty: bool) -> String {
-      if make_pretty {
-         String::new()
-      } else {
-         String::new()
+   pub fn format(&self, make_pretty: bool) -> String {
+      
+      let mut f = Formatter {
+         buf: String::new(),
+      };
+      
+      f.write("<!DOCTYPE HTML>");
+      
+      for child in self.children.iter() {
+         f = child.format(f, 0, make_pretty);
       }
+      
+      f.buf
+      
    }
    
 }
