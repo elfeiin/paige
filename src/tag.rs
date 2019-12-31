@@ -7,6 +7,26 @@ pub struct Tag {
    children: TagType,
 }
 
+impl Tag {
+   pub fn new_paired(tag_name: TagName) -> Self {
+      Tag {
+         tag_name,
+         attributes: vec!(),
+         style: vec!(),
+         children: TagType::Paired(vec!()),
+      }
+   }
+   
+   pub fn new_unpaired(tag_name: TagName) -> Self {
+      Tag {
+         tag_name,
+         attributes: vec!(),
+         style: vec!(),
+         children: TagType::Unpaired,
+      }
+   }
+}
+
 // TODO: impl IsHtmlTag for Tag
 
 impl std::fmt::Display for Tag {
@@ -37,6 +57,11 @@ impl std::fmt::Display for Tag {
       Ok(())
       
    }
+}
+
+pub enum TagType {
+   Paired(Vec<Markup>),
+   Unpaired,
 }
 
 pub enum TagName {

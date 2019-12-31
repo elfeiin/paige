@@ -12,45 +12,40 @@ use tag::*;
 mod traits;
 use traits::*;
 
-pub enum Markup {
-   Tag(Tag),
-   Text(String)
-}
-
-impl std::fmt::Display for Markup {
-   fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-      match self {
-         Markup::Tag(el) => write!(f, "{}", el),
-         Markup::Text(text) => write!(f, "{}", text)
-      }
-   }
-}
-
-pub enum TagType {
-   Paired(Vec<Markup>),
-   Unpaired,
-}
+mod markup;
+use markup::*;
 
 pub struct Page {
-   markups: TagType,
+   children: Vec<Markup>,
 }
 
-// TODO: impl IsHtmlTag for Page.
+impl IsHtmlTag for Page {
+   fn add(&mut self, child: Markup) {
+      self.children.push(child);
+   }
+}
 
 impl Page {
    pub fn new() -> Self {
       Page {
-         markups: TagType::Unpaired,
+         children: vec!(),
       }
    }
 }
 
 #[cfg(test)]
 mod tests {
+   
+   use super::*;
+   
    #[test]
    fn it_works() {
       
       // TODO: Write test that makes a basic html page.
+      
+      let page = Page::new();
+      
+      
       
    }
 }
