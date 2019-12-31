@@ -1,7 +1,7 @@
 #![allow(dead_code, non_camel_case_types, unused_imports)]
 
-mod elements;
-use elements::*;
+mod element;
+use element::*;
 
 mod page;
 use page::*;
