@@ -56,7 +56,7 @@ mod tests {
    #[test]
    fn test_add_and_new() {
       
-      let mut page = Page::new(&[]);
+      let page = Page::new(&[]);
       
       let html = El::paired(Tag::Html, &[]);
       

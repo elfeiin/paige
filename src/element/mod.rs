@@ -64,9 +64,14 @@ impl El {
       self
    }
    
-   pub fn add_child(mut self, child: El) -> Self {
+   pub fn add_child(&mut self, child: El) -> Result<(), ()> {
+      
+      if self.is_text || !self.paired {
+         return Err(());
+      }
+      
       self.children.push(child);
-      self
+      Ok(())
    }
    
    pub fn id_find(&self, id: &String) -> Option<&El> {
