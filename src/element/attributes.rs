@@ -1,7 +1,7 @@
 #[derive(Clone)]
 pub struct Attr {
-   name: String,
-   value: String,
+   pub name: String,
+   pub value: String,
 }
 
 impl Attr {
@@ -74,6 +74,7 @@ pub enum AttrName {
    Href,
    Hreflang,
    HttpEquivalent,
+   Id,
    Identifier,
    IsMap,
    Kind,
@@ -187,7 +188,7 @@ pub enum AttrName {
    SourceSet,
    Start,
    Step,
-   Style,
+   // Style,
    TabIndex,
    Target,
    Title,
@@ -246,6 +247,7 @@ impl std::convert::Into<String> for AttrName {
          AttrName::Href => "href",
          AttrName::Hreflang => "hreflang",
          AttrName::HttpEquivalent => "http-equiv",
+         AttrName::Id => "id",
          AttrName::Identifier => "id",
          AttrName::IsMap => "ismap",
          AttrName::Kind => "kind",
@@ -359,7 +361,7 @@ impl std::convert::Into<String> for AttrName {
          AttrName::SourceSet => "srcset",
          AttrName::Start => "start",
          AttrName::Step => "step",
-         AttrName::Style => "style",
+         // AttrName::Style => "style",
          AttrName::TabIndex => "tabindex",
          AttrName::Target => "target",
          AttrName::Title => "title",
