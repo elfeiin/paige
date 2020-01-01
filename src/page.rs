@@ -16,7 +16,7 @@ impl Page {
       self
    }
    
-   pub fn id_find(&self, id: &String) -> Option<&El> {
+   pub fn id_find(&self, id: &str) -> Option<&El> {
       
       for child in self.children.iter() {
          
@@ -54,16 +54,72 @@ mod tests {
    use super::*;
    
    #[test]
-   fn test_add_and_new() {
-      
-      let page = Page::new(&[]);
+   fn add() {
       
       let html = El::paired(Tag::Html, &[]);
       
-      page.add(html);
+      let page = Page::new(&[]).add(html);
       
+      assert!(page.children.len() == 1);
+   }
+   
+   #[test]
+   fn id_find_some() {
       
+      let html = El::paired(Tag::Html, &[]).add_attribute(Attr::new(AttrName::Id, "html"));
       
+      let page = Page::new(&[]).add(html);
+      
+      if let None = page.id_find("html") {
+         panic!();
+      }
+   }
+   
+   #[test]
+   #[should_panic]
+   fn id_find_none() {
+      
+      let html = El::paired(Tag::Html, &[]).add_attribute(Attr::new(AttrName::Id, "html"));
+      
+      let page = Page::new(&[]).add(html);
+      
+      if let None = page.id_find("htmk") {
+         panic!();
+      }
+   }
+   
+   #[test]
+   fn format_bare_tags() {
+      
+      use Tag::*;
+      
+      let page = Page::new(&[
+         El::paired(Html, &[
+            El::paired(Head, &[
+               El::paired(Style, &[]),
+            ]),
+            El::paired(Body, &[]),
+         ])
+      ]).format(false);
+      
+      assert_eq!(page, "<!DOCTYPE HTML><html><head><style></style></head><body></body></html>");
+   }
+   
+   #[test]
+   fn format_bare_tags_pretty() {
+      
+      use Tag::*;
+      
+      let page = Page::new(&[
+         El::paired(Html, &[
+            El::paired(Head, &[
+               El::paired(Style, &[]),
+            ]),
+            El::paired(Body, &[]),
+         ])
+      ]).format(true);
+      
+      assert_eq!(page, "<!DOCTYPE HTML>\n<html>\n   <head>\n      <style></style>\n   </head>\n   <body></body>\n</html>");
    }
 }
 

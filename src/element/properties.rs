@@ -5,15 +5,15 @@ pub struct Prop {
 }
 
 impl Prop {
-   pub fn new<N: Into<String>>(name: N, value: String) -> Self {
+   pub fn new<N: Into<String>, M: Into<String>>(name: N, value: M) -> Self {
       Prop {
          name: name.into(),
-         value: value
+         value: value.into(),
       }
    }
    
-   pub fn value(&mut self, value: String) {
-      self.value = value;
+   pub fn value<N: Into<String>>(&mut self, value: N) {
+      self.value = value.into();
    }
 }
 

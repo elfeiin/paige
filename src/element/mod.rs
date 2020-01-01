@@ -54,8 +54,8 @@ impl El {
       }
    }
    
-   pub fn add_attribute(mut self, attribute: Attr) -> Self {
-      self.attributes.push(attribute);
+   pub fn add_attribute(mut self, attr: Attr) -> Self {
+      self.attributes.push(attr);
       self
    }
    
@@ -74,7 +74,7 @@ impl El {
       Ok(())
    }
    
-   pub fn id_find(&self, id: &String) -> Option<&El> {
+   pub fn id_find(&self, id: &str) -> Option<&El> {
       
       for attr in self.attributes.iter() {
          if attr.name == "id" && attr.value == *id {
@@ -105,9 +105,8 @@ impl El {
          return f;
       }
       
-      f.write("\n");
-      
       if make_pretty {
+         f.write("\n");
          f.prepend_depth(depth);
       }
       
@@ -132,13 +131,9 @@ impl El {
             f = child.format(f, depth+1, make_pretty);
          }
          
-         if self.children.len() > 0 {
-            
+         if self.children.len() > 0 && make_pretty {
             f.write("\n");
-            
-            if make_pretty {
-               f.prepend_depth(depth);
-            }
+            f.prepend_depth(depth);
          }
          
          f.write("</");
