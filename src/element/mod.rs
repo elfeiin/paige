@@ -54,7 +54,7 @@ impl El {
       }
    }
    
-   pub fn attribute(mut self, attr: Attr) -> Self {
+   pub fn attr(mut self, attr: Attr) -> Self {
       self.attributes.push(attr);
       self
    }
