@@ -58,7 +58,7 @@ mod tests {
       
       let html = El::paired(Tag::Html, &[]);
       
-      let page = Page::new(&[]).add(html);
+      let page = Page::new(&[html]);
       
       assert!(page.children.len() == 1);
    }
@@ -66,22 +66,51 @@ mod tests {
    #[test]
    fn id_find_some() {
       
-      let html = El::paired(Tag::Html, &[]).add_attribute(Attr::new(AttrName::Id, "html"));
+      let html = El::paired(Tag::Html, &[
+         
+         El::paired(Tag::Div, &[]).attribute(Attr::new(AttrName::Id, "div")),
+         
+      ]).attribute(Attr::new(AttrName::Id, "html"));
       
-      let page = Page::new(&[]).add(html);
+      let page = Page::new(&[html]);
       
-      if let None = page.id_find("html") {
+      if let None = page.id_find("div") {
          panic!();
       }
+   }
+   
+   #[test]
+   fn id_find_depth_4() {
+      
+      let html = El::paired(Tag::Html, &[
+         El::paired(Tag::Div, &[
+            El::paired(Tag::Div, &[
+               El::paired(Tag::Div, &[])
+               .attribute(Attr::new(AttrName::Id, "div"))
+               .attribute(Attr::new(AttrName::Name, "xD")),
+            ]),
+            El::paired(Tag::Div, &[])
+               .attribute(Attr::new(AttrName::Id, "div"))
+               .attribute(Attr::new(AttrName::Name, "xP")),
+         ]),
+      ]).attribute(Attr::new(AttrName::Id, "html"));
+      
+      let page = Page::new(&[html]);
+      
+      assert_eq!(page.id_find("div").unwrap().attributes[1].value, "xD");
    }
    
    #[test]
    #[should_panic]
    fn id_find_none() {
       
-      let html = El::paired(Tag::Html, &[]).add_attribute(Attr::new(AttrName::Id, "html"));
+      let html = El::paired(Tag::Html, &[
+         
+         El::paired(Tag::Div, &[]).attribute(Attr::new(AttrName::Id, "div")),
+         
+      ]).attribute(Attr::new(AttrName::Id, "html"));
       
-      let page = Page::new(&[]).add(html);
+      let page = Page::new(&[html]);
       
       if let None = page.id_find("htmk") {
          panic!();

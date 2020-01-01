@@ -14,9 +14,9 @@ pub struct El {
    is_text: bool,
    paired: bool,
    name: String,
-   attributes: Vec<Attr>,
-   style: Vec<Prop>,
-   children: Vec<El>,
+   pub attributes: Vec<Attr>,
+   pub style: Vec<Prop>,
+   pub children: Vec<El>,
 }
 
 impl El {
@@ -54,7 +54,7 @@ impl El {
       }
    }
    
-   pub fn add_attribute(mut self, attr: Attr) -> Self {
+   pub fn attribute(mut self, attr: Attr) -> Self {
       self.attributes.push(attr);
       self
    }
