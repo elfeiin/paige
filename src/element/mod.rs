@@ -103,6 +103,10 @@ impl El {
       f.write("<");
       f.write(self.name.clone());
       
+      if self.attributes.len() > 0 || self.style.len() > 0 {
+         f.write(" ");
+      }
+      
       if self.attributes.len() > 0 {
          f.write(self.attributes.iter().map(|a| format!("{}", a) ).collect::<Vec<String>>().join(" "));
       }

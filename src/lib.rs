@@ -1,10 +1,10 @@
 #![allow(dead_code, unused_imports)]
 
 mod element;
-use element::*;
+pub use element::*;
 
 mod formatter;
-use formatter::*;
+pub use formatter::*;
 
 mod page;
-use page::*;
+pub use page::*;
