@@ -68,9 +68,9 @@ mod tests {
       
       let html = El::paired(Tag::Html, &[
          
-         El::paired(Tag::Div, &[]).attr(Attr::new(AttrName::Id, "div")),
+         El::paired(Tag::Div, &[]).attr(AttrName::Id, "div"),
          
-      ]).attr(Attr::new(AttrName::Id, "html"));
+      ]).attr(AttrName::Id, "html");
       
       let page = Page::new(&[html]);
       
@@ -86,14 +86,14 @@ mod tests {
          El::paired(Tag::Div, &[
             El::paired(Tag::Div, &[
                El::paired(Tag::Div, &[])
-               .attr(Attr::new(AttrName::Id, "div"))
-               .attr(Attr::new(AttrName::Name, "xD")),
+               .attr(AttrName::Id, "div")
+               .attr(AttrName::Name, "xD"),
             ]),
             El::paired(Tag::Div, &[])
-               .attr(Attr::new(AttrName::Id, "div"))
-               .attr(Attr::new(AttrName::Name, "xP")),
+               .attr(AttrName::Id, "div")
+               .attr(AttrName::Name, "xP"),
          ]),
-      ]).attr(Attr::new(AttrName::Id, "html"));
+      ]).attr(AttrName::Id, "html");
       
       let page = Page::new(&[html]);
       
@@ -106,9 +106,9 @@ mod tests {
       
       let html = El::paired(Tag::Html, &[
          
-         El::paired(Tag::Div, &[]).attr(Attr::new(AttrName::Id, "div")),
+         El::paired(Tag::Div, &[]).attr(AttrName::Id, "div"),
          
-      ]).attr(Attr::new(AttrName::Id, "html"));
+      ]).attr(AttrName::Id, "html");
       
       let page = Page::new(&[html]);
       

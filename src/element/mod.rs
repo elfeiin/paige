@@ -54,24 +54,14 @@ impl El {
       }
    }
    
-   pub fn attr(mut self, attr: Attr) -> Self {
-      self.attributes.push(attr);
+   pub fn attr(mut self, attr: AttrName, value: &str) -> Self {
+      self.attributes.push(Attr::new(attr, value));
       self
    }
    
-   pub fn add_style_prop(mut self, prop: Prop) -> Self {
-      self.style.push(prop);
+   pub fn add_style_prop(mut self, prop: PropName, value: &str) -> Self {
+      self.style.push(Prop::new(prop, value));
       self
-   }
-   
-   pub fn add_child(&mut self, child: El) -> Result<(), ()> {
-      
-      if self.is_text || !self.paired {
-         return Err(());
-      }
-      
-      self.children.push(child);
-      Ok(())
    }
    
    pub fn id_find(&self, id: &str) -> Option<&El> {
