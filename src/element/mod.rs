@@ -115,12 +115,12 @@ impl El {
       }
       
       if self.attributes.len() > 0 {
-         f.write(self.attributes.iter().map(|a| format!("{}", a) ).collect::<Vec<String>>().join(" "));
+         f.write(self.attributes.iter().map(|a| format!("{}='{}'", a.name, a.value) ).collect::<Vec<String>>().join(" "));
       }
       
       if self.style.len() > 0 {
          f.write(" style='");
-         f.write(self.style.iter().map(|p| format!("{}", p) ).collect::<Vec<String>>().join(" "));
+         f.write(self.style.iter().map(|p| format!("{}: {};", p.name, p.value) ).collect::<Vec<String>>().join(" "));
          f.write("' ");
       }
       

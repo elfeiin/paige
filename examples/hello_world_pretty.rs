@@ -21,7 +21,7 @@ fn main() {
             (Background, "green")
          ])
       ])
-   ]).format(false);
+   ]).format(true);
    
    println!("{}", page);
    

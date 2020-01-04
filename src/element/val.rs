@@ -16,14 +16,3 @@ impl Val {
       self.value = value.into();
    }
 }
-
-impl std::fmt::Display for Val {
-   fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-      write!(
-         f, 
-         "{}: {};",
-         self.name,
-         self.value
-      )
-   }
-}
