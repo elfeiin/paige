@@ -1,36 +1,42 @@
 use super::*;
 
+/// The Page struct.
+/// Stores a list of nested HTML elements.
 pub struct Page {
    children: Vec<El>,
 }
 
 impl Page {
+   /// Returns a new Page. Takes a slice of El as input.
    pub fn new(children: &[El]) -> Self {
       Page {
          children: children.to_vec(),
       }
    }
    
+   /// Pushes an El onto children field vec.
    pub fn add(mut self, child: El) -> Self {
       self.children.push(child);
       self
    }
    
-   pub fn id_find(&self, id: &str) -> Option<&El> {
+   // pub fn id_find(&self, id: &str) -> Option<&El> {
       
-      for child in self.children.iter() {
+   //    for child in self.children.iter() {
          
-         let find = child.id_find(id);
+   //       let find = child.id_find(id);
          
-         match find {
-            Some(_) => { return find; },
-            None => (),
-         }
-      }
+   //       match find {
+   //          Some(_) => { return find; },
+   //          None => (),
+   //       }
+   //    }
       
-      None
-   }
+   //    None
+   // }
    
+   /// Formats the Page for display or storage. Automatically
+   /// prepends '<!DOCTYPE HTML> to the beginning of the file.
    pub fn format(&self, make_pretty: bool) -> String {
       
       let mut f = Formatter {
@@ -63,69 +69,69 @@ mod tests {
       assert!(page.children.len() == 1);
    }
    
-   #[test]
-   fn id_find_some() {
+   // #[test]
+   // fn id_find_some() {
       
-      let html = El::paired(Tag::Html, &[
+   //    let html = El::paired(Tag::Html, &[
          
-         El::paired(Tag::Div, &[])
-         .attributes(&[(Attr::Id, "div")]),
+   //       El::paired(Tag::Div, &[])
+   //       .attributes(&[(Attr::Id, "div")]),
          
-      ]).attributes(&[(Attr::Id, "html")]);
+   //    ]).attributes(&[(Attr::Id, "html")]);
       
-      let page = Page::new(&[html]);
+   //    let page = Page::new(&[html]);
       
-      if let None = page.id_find("div") {
-         panic!();
-      }
-   }
+   //    if let None = page.id_find("div") {
+   //       panic!();
+   //    }
+   // }
    
-   #[test]
-   fn id_find_depth_4() {
+   // #[test]
+   // fn id_find_depth_4() {
       
-      let html = El::paired(Tag::Html, &[
-         El::paired(Tag::Div, &[
-            El::paired(Tag::Div, &[
-               El::paired(Tag::Div, &[])
-                  .attributes(&[
-                     (Attr::Id, "div"),
-                     (Attr::Name, "xD")
-                  ]),
-            ]),
-            El::paired(Tag::Div, &[])
-               .attributes(&[
-                  (Attr::Id, "div"),
-                  (Attr::Name, "xP")
-               ]),
-         ]),
-      ])
-      .attributes(&[(Attr::Id, "html")]);
+   //    let html = El::paired(Tag::Html, &[
+   //       El::paired(Tag::Div, &[
+   //          El::paired(Tag::Div, &[
+   //             El::paired(Tag::Div, &[])
+   //                .attributes(&[
+   //                   (Attr::Id, "div"),
+   //                   (Attr::Name, "xD")
+   //                ]),
+   //          ]),
+   //          El::paired(Tag::Div, &[])
+   //             .attributes(&[
+   //                (Attr::Id, "div"),
+   //                (Attr::Name, "xP")
+   //             ]),
+   //       ]),
+   //    ])
+   //    .attributes(&[(Attr::Id, "html")]);
       
-      let page = Page::new(&[html]);
+   //    let page = Page::new(&[html]);
       
-      assert_eq!(page.id_find("div").unwrap().attributes[1].value, "xD");
-   }
+   //    assert_eq!(page.id_find("div").unwrap().attributes[1].value, "xD");
+   // }
    
-   #[test]
-   #[should_panic]
-   fn id_find_none() {
+   // #[test]
+   // #[should_panic]
+   // fn id_find_none() {
       
-      let html = El::paired(Tag::Html, &[
+   //    let html = El::paired(Tag::Html, &[
          
-         El::paired(Tag::Div, &[])
-         .attributes(&[(Attr::Id, "div")]),
+   //       El::paired(Tag::Div, &[])
+   //       .attributes(&[(Attr::Id, "div")]),
          
-      ])
-         .attributes(&[
-            (Attr::Id, "html"),
-         ]);
+   //    ])
+   //       .attributes(&[
+   //          (Attr::Id, "html"),
+   //       ]);
       
-      let page = Page::new(&[html]);
+   //    let page = Page::new(&[html]);
       
-      if let None = page.id_find("htmk") {
-         panic!();
-      }
-   }
+   //    if let None = page.id_find("htmk") {
+   //       panic!();
+   //    }
+   // }
    
    #[test]
    fn format_bare_tags() {

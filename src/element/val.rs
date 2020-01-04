@@ -1,3 +1,4 @@
+/// A value struct used for storing attributes and style properties.
 #[derive(Clone)]
 pub struct Val {
    pub name: String,
