@@ -4,8 +4,9 @@ version = "0.1.0"
 authors = ["anyusernameworks <patlymlatun@gmail.com>"]
 edition = "2018"
 license-file = "./LICENSE"
-description = "A simple HTML API for creating and reusing HTML templates."
+description = "A simple HTML templating API, written in Rust."
 repository = "https://github.com/anyusernameworks/paige.git"
+documentation = "./target/doc"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
