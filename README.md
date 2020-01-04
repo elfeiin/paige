@@ -1,3 +1,3 @@
 # paige
-An API written in Rust to simplify HTML templating.
+A simple HTML templating API, written in Rust.
 Credit to cyanidee for design discussion.
