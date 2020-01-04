@@ -1,2 +1,2 @@
 # paige
-A markup API
+An API written in Rust to simplify HTML templating.
