@@ -225,9 +225,9 @@ pub enum Prop {
    ZIndex,
 }
 
-impl std::convert::Into<String> for Prop {
-   fn into(self) -> String {
-      match self {
+impl std::convert::From<Prop> for String {
+   fn from(prop: Prop) -> Self {
+      match prop {
          Prop::AlignContent => "align-content",
          Prop::AlignItems => "align-items",
          Prop::AlignSelf => "align-self",

@@ -119,9 +119,9 @@ pub enum Tag {
    Wbr,
 }
 
-impl std::convert::Into<String> for Tag {
-   fn into(self) -> String {
-      match self {
+impl std::convert::From<Tag> for String {
+   fn from(tag: Tag) -> Self {
+      match tag {
          Tag::A => "a",
          Tag::Abbr => "abbr",
          Tag::Acronym => "acronym",

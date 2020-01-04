@@ -171,9 +171,9 @@ pub enum Attr {
    Wrap,
 }
 
-impl std::convert::Into<String> for Attr {
-   fn into(self) -> String {
-      match self {
+impl std::convert::From<Attr> for String {
+   fn from(attr: Attr) -> Self {
+      match attr {
          Attr::Accept => "accept",
          Attr::AcceptCharset => "accept-charset",
          Attr::AccessKey => "accesskey",
