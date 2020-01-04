@@ -9,13 +9,16 @@ pub use properties::*;
 mod tags;
 pub use tags::*;
 
+mod val;
+pub use val::*;
+
 #[derive(Clone)]
 pub struct El {
    is_text: bool,
    paired: bool,
    name: String,
-   pub attributes: Vec<Attr>,
-   pub style: Vec<Prop>,
+   pub attributes: Vec<Val>,
+   pub style: Vec<Val>,
    pub children: Vec<El>,
 }
 
@@ -54,16 +57,16 @@ impl El {
       }
    }
    
-   pub fn attributes(mut self, values: &[(AttrName, &str)]) -> Self {
+   pub fn attributes(mut self, values: &[(Attr, &str)]) -> Self {
       for val in values {
-         self.attributes.push(Attr::new(val.0.clone(), val.1));
+         self.attributes.push(Val::new(val.0.clone(), val.1));
       }
       self
    }
    
-   pub fn stylize(mut self, values: &[(PropName, &str)]) -> Self {
+   pub fn style(mut self, values: &[(Prop, &str)]) -> Self {
       for val in values {
-         self.style.push(Prop::new(val.0.clone(), val.1));
+         self.style.push(Val::new(val.0.clone(), val.1));
       }
       self
    }
