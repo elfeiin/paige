@@ -121,7 +121,7 @@ impl El {
       if self.style.len() > 0 {
          f.write(" style='");
          f.write(self.style.iter().map(|p| format!("{}: {};", p.name, p.value) ).collect::<Vec<String>>().join(" "));
-         f.write("' ");
+         f.write("'");
       }
       
       f.write(">");
