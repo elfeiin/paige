@@ -54,13 +54,17 @@ impl El {
       }
    }
    
-   pub fn attr(mut self, attr: AttrName, value: &str) -> Self {
-      self.attributes.push(Attr::new(attr, value));
+   pub fn attributes(mut self, values: &[(AttrName, &str)]) -> Self {
+      for val in values {
+         self.attributes.push(Attr::new(val.0.clone(), val.1));
+      }
       self
    }
    
-   pub fn add_style_prop(mut self, prop: PropName, value: &str) -> Self {
-      self.style.push(Prop::new(prop, value));
+   pub fn stylize(mut self, values: &[(PropName, &str)]) -> Self {
+      for val in values {
+         self.style.push(Prop::new(val.0.clone(), val.1));
+      }
       self
    }
    

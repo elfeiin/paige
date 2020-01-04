@@ -3,21 +3,21 @@ use paige::*;
 fn main() {
    
    use Tag::*;
+   use AttrName::*;
+   use PropName::*;
    
    let page = Page::new(&[
       El::paired(Html, &[
          El::paired(Head, &[
             El::unpaired(Meta)
-               .attr(AttrName::Charset, "UTF-8"),
-            El::paired(Style, &[
-               
-            ])
+               .attributes(&[
+                  (Charset, "UTF-8"),
+               ]),
+            El::paired(Style, &[])
          ]),
-         El::paired(Body, &[
-            
-         ])
+         El::paired(Body, &[])
       ])
-   ]).format(true);
+   ]).format(false);
    
    println!("{}", page);
    
