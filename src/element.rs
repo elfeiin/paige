@@ -1,17 +1,5 @@
 use super::*;
 
-mod attributes;
-pub use attributes::*;
-
-mod properties;
-pub use properties::*;
-
-mod tags;
-pub use tags::*;
-
-mod val;
-pub use val::*;
-
 /// An HTML element.
 #[derive(Clone)]
 pub struct El {
@@ -24,7 +12,6 @@ pub struct El {
 }
 
 impl El {
-   
    /// Creates a new element that displays its name as text and nothing else
    /// when formatted. This is useful for making innerHTML something other
    /// than a tag, such as inside the <style> or <script> tags.

@@ -1,4 +1,4 @@
-/// List of HTML element attributes
+/// HTML attributes
 #[derive(Clone)]
 pub enum Attr {
    Accept,

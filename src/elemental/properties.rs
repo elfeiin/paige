@@ -1,4 +1,4 @@
-/// List of CSS properties.
+/// CSS properties
 #[derive(Clone)]
 pub enum Prop {
    AlignContent,

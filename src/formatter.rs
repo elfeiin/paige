@@ -1,4 +1,4 @@
-
+#[doc(hidden)]
 pub struct Formatter {
    pub buf: String,
 }

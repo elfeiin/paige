@@ -1,4 +1,4 @@
-/// A list of HTML tags.
+/// HTML tags
 pub enum Tag {
    A,
    Abbr,
