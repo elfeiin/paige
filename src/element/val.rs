@@ -1,4 +1,5 @@
-/// A value struct used for storing attributes and style properties.
+// A struct for storing values such as attributes and css.
+#[doc(hidden)]
 #[derive(Clone)]
 pub struct Val {
    pub name: String,
