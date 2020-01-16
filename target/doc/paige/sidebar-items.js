@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Attr","HTML attribute enum."],["Prop","CSS properties"],["Tag","HTML tags"]],"struct":[["El","An HTML element."],["Page","The Page struct. Stores a list of nested HTML elements."]],"trait":[["Format",""]]});

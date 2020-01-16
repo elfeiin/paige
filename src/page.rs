@@ -40,12 +40,11 @@ impl Page {
    /// prepends '<!DOCTYPE HTML> to the beginning of the file.
    pub fn format(&self, make_pretty: bool) -> String {
       let mut f = Formatter {
-         depth: 0,
          make_pretty,
          buf: String::new(),
       };
       
-      f = self.fmt(f);
+      f.parse_and_format(&self.content, 0);
       
       f.buf
    }

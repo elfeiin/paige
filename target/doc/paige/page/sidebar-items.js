@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Page","The Page struct. Stores a list of nested HTML elements."]]});

@@ -116,5 +116,5 @@ fn index() -> Page {
 }
 
 fn main() {
-	println!("{}", index().format(true));
+	println!("{}", index().format(false));
 }
