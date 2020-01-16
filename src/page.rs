@@ -21,9 +21,9 @@ impl Page {
    }
    
    /// Allows for finding a child element by its id attribute.
-   pub fn id_find(&self, id: &str) -> Option<&El> {
+   pub fn id_find(&mut self, id: &str) -> Option<&mut El> {
       
-      for child in self.children.iter() {
+      for child in self.children.iter_mut() {
          
          let find = child.id_find(id);
          

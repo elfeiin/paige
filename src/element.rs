@@ -72,7 +72,7 @@ impl El {
    }
    
    /// Allows for finding a child element by its id attribute.
-   pub fn id_find(&self, id: &str) -> Option<&El> {
+   pub fn id_find(&mut self, id: &str) -> Option<&mut El> {
       
       for attr in self.attributes.iter() {
          if attr.name == "id" && attr.value == *id {
@@ -82,7 +82,7 @@ impl El {
       
       if !self.is_text && self.paired {
          
-         for child in self.children.iter() {
+         for child in self.children.iter_mut() {
             
             let find = child.id_find(id);
             
