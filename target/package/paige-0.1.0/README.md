@@ -1,2 +1,0 @@
-# paige
-A markup API
