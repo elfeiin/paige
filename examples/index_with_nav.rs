@@ -66,7 +66,8 @@ fn nav() -> El {
       Tag::A
       .attributes(&[
          Attr::Href("".into()),
-      ]).content(&[
+      ])
+      .content(&[
          El::text("Search")
       ]),
    ])
