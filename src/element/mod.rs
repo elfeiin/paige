@@ -34,8 +34,7 @@ impl El {
       }
    }
    
-   /// Takes a slice of (Attr, &str) as input. Loops through this slice
-   /// and converts each member to a Val and pushes it into attributes Vec.
+   /// Takes a slice of Attr as input and pushes each member onto .attributes vec.
    pub fn attributes(mut self, values: &[Attr]) -> Self {
       for val in values {
          self.attributes.push(val.clone());
@@ -43,8 +42,7 @@ impl El {
       self
    }
    
-   /// Takes a slice of (Prop, &str) as input. Loops through this slice
-   /// and converts each member to a Val and pushes it into style Vec.
+   /// Takes a slice of Prop as input and pushes each member onto .style vec.
    pub fn style(mut self, values: &[Prop]) -> Self {
       for val in values {
          self.style.push(val.clone());
@@ -52,6 +50,7 @@ impl El {
       self
    }
    
+   /// Takes a slice of El and pushes each element onto .content.
    pub fn content(mut self, values: &[El]) -> Self {
       for val in values {
          self.content.push(val.clone());

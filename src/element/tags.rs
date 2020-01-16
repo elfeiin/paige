@@ -246,7 +246,7 @@ impl std::convert::From<Tag> for String {
 }
 
 impl Tag {
-   
+   /// Consumes this Tag and returns an El.
    pub fn make_element(self) -> El {
       use Tag::*;
       match self {
@@ -277,21 +277,18 @@ impl Tag {
       }
    }
    
+   /// Consumes a Tag and returns an El with the specified attributes.
    pub fn attributes(self, attrs: &[Attr]) -> El {
-      
       self.make_element().attributes(attrs)
-      
    }
    
+   /// Consumes a Tag and returns an El with the specified style properties.
    pub fn style(self, props: &[Prop]) -> El {
-      
       self.make_element().style(props)
-      
    }
    
+   /// Consumes a Tag and returns an El with the specified content (children).
    pub fn content(self, content: &[El]) -> El {
-      
       self.make_element().content(content)
-      
    }
 }
