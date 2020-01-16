@@ -1,3 +1,5 @@
+use super::*;
+
 /// HTML tags
 pub enum Tag {
    A,
@@ -240,5 +242,56 @@ impl std::convert::From<Tag> for String {
          Tag::Video => "video",
          Tag::Wbr => "wbr",
       }.into()
+   }
+}
+
+impl Tag {
+   
+   pub fn make_element(self) -> El {
+      use Tag::*;
+      match self {
+         Area     | Base   |
+         Basefont | Br     |
+         Col      | Embed  |
+         Frame    | Hr     |
+         Img      | Input  |
+         Link     | Meta   |
+         Param    | Source |
+         Track    | Wbr
+         => El {
+            name: self.into(),
+            is_text: false,
+            paired: false,
+            attributes: vec![],
+            style: vec![],
+            content: vec![],
+         },
+         _ => El {
+            name: self.into(),
+            is_text: false,
+            paired: true,
+            attributes: vec![],
+            style: vec![],
+            content: vec![],
+         },
+      }
+   }
+   
+   pub fn attributes(self, attrs: &[Attr]) -> El {
+      
+      self.make_element().attributes(attrs)
+      
+   }
+   
+   pub fn style(self, props: &[Prop]) -> El {
+      
+      self.make_element().style(props)
+      
+   }
+   
+   pub fn content(self, content: &[El]) -> El {
+      
+      self.make_element().content(content)
+      
    }
 }
