@@ -1,5 +1,3 @@
-#![allow(dead_code, unused_imports)]
-
 /// A simple HTML templating API.
 /// 
 /// # Examples

@@ -1,4 +1,3 @@
-/// CSS properties
 #[derive(Clone)]
 pub enum Prop {
    AlignContent(String),

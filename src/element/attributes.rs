@@ -1,4 +1,3 @@
-/// HTML attribute enum.
 #[derive(Clone)]
 pub enum Attr {
    Accept(String),

@@ -1,6 +1,4 @@
 use super::*;
-
-/// HTML tags
 pub enum Tag {
    A,
    Abbr,
