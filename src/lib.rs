@@ -24,7 +24,6 @@ pub use formatter::*;
 
 impl Format for Page {
    fn fmt(&self, mut f: Formatter) -> Formatter {
-      
       f.write("<!DOCTYPE HTML>");
       
       for child in self.content.iter() {

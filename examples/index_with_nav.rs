@@ -49,54 +49,50 @@ body {
 }
 
 fn nav() -> El {
-   El::paired(Tag::Div, &[
-      
-      El::paired(Tag::A, &[
-         El::text("DDS")
-      ])
-      .attributes(&[
-         (Attr::Href, "/")
-      ]),
-      
-      El::text(" | "),
-      
-      El::paired(Tag::A, &[
-         El::text("Search")
-      ])
-      .attributes(&[
-         (Attr::Href, "")
-      ]),
-      
-   ])
+   Tag::Div
    .attributes(&[
-      (Attr::Id, "navigation"),
-      (Attr::Class, "nav"),
+      Attr::Id("navigation".into()),
+      Attr::Class("nav".into()),
+   ])
+   .content(&[
+      Tag::A
+      .attributes(&[
+         Attr::Href("/".into()),
+      ])
+      .content(&[
+         El::text("DDS")
+      ]),
+      El::text(" | "),
+      Tag::A
+      .attributes(&[
+         Attr::Href("".into()),
+      ]).content(&[
+         El::text("Search")
+      ]),
    ])
 }
 
 fn base_page() -> Page {
    Page::new(&[
-      El::paired(Tag::Html, &[
-         El::paired(Tag::Head, &[
-            El::unpaired(Tag::Meta)
+      Tag::Html
+      .content(&[
+         Tag::Head
+         .content(&[
+            Tag::Meta
             .attributes(&[
-               (Attr::Charset, "utf8"),
+               Attr::Charset("UTF-8".into()),
             ]),
-            El::paired(Tag::Style, &[
+            Tag::Style.content(&[
                css(),
             ])
          ]),
-         El::paired(Tag::Body, &[
-            
+         Tag::Body
+         .content(&[
             nav(),
-            
-            El::paired(Tag::Div, &[
-               
-            ])
+            Tag::Div
             .attributes(&[
-               (Attr::Id, "main"),
+               Attr::Id("main".into()),
             ]),
-            
          ])
       ])
    ])
@@ -105,12 +101,12 @@ fn base_page() -> Page {
 fn index() -> Page {
    let mut page = base_page();
    
-   page.children[0].children[1].children[1].children.push(
+   page.content[0].content[1].content[1].content.push(
       El::text("Hello")
    );
    
    if let Some(el) = page.id_find("main") {
-      el.children.push(
+      el.content.push(
          El::text("<br>Hello")
       );
    }

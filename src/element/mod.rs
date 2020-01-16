@@ -20,6 +20,20 @@ pub struct El {
 
 impl El {
    
+   /// Creates a new element that displays its name as text and nothing else
+   /// when formatted. This is useful for making innerHTML something other
+   /// than a tag, such as inside the <style> or <script> tags.
+   pub fn text<N: Into<String>>(text: N) -> Self {
+      El {
+         is_text: true,
+         paired: false,
+         name: text.into(),
+         attributes: vec![],
+         style: vec![],
+         content: vec![],
+      }
+   }
+   
    /// Takes a slice of (Attr, &str) as input. Loops through this slice
    /// and converts each member to a Val and pushes it into attributes Vec.
    pub fn attributes(mut self, values: &[Attr]) -> Self {

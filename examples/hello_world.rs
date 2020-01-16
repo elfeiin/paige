@@ -2,27 +2,17 @@ use paige::*;
 
 fn main() {
    
-   use Tag::*;
-   use Prop::*;
-   
    let page = Page::new(&[
-      El::paired(Html, &[
-         El::paired(Head, &[
-            El::unpaired(Meta)
-            .attributes(&[
-               (Attr::Charset, "UTF-8"),
-            ]),
-            El::paired(Style, &[])
+      Tag::Html.content(&[
+         Tag::Head.content(&[
+            Tag::Meta.attributes(&[Attr::Charset("UTF-8".into())])
          ]),
-         El::paired(Body, &[
-            
-         ])
-         .style(&[
-            (Background, "green")
-         ])
+         Tag::Body.style(&[Prop::Background("green".into())]).content(&[])
       ])
-   ]).format(false);
+   ]);
    
-   println!("{}", page);
+   println!("{}", page.format(false));
+   println!("");
+   println!("{}", page.format(true));
    
 }
