@@ -3,9 +3,9 @@ use super::*;
 /// An HTML element.
 #[derive(Clone)]
 pub struct El {
-   is_text: bool,
-   paired: bool,
-   name: String,
+   pub is_text: bool,
+   pub paired: bool,
+   pub name: String,
    pub attributes: Vec<Val>,
    pub style: Vec<Val>,
    pub children: Vec<El>,
@@ -71,29 +71,30 @@ impl El {
       self
    }
    
-   // pub fn id_find(&self, id: &str) -> Option<&El> {
+   /// Allows for finding a child element by its id attribute.
+   pub fn id_find(&self, id: &str) -> Option<&El> {
       
-   //    for attr in self.attributes.iter() {
-   //       if attr.name == "id" && attr.value == *id {
-   //          return Some(self);
-   //       }
-   //    }
+      for attr in self.attributes.iter() {
+         if attr.name == "id" && attr.value == *id {
+            return Some(self);
+         }
+      }
       
-   //    if !self.is_text && self.paired {
+      if !self.is_text && self.paired {
          
-   //       for child in self.children.iter() {
+         for child in self.children.iter() {
             
-   //          let find = child.id_find(id);
+            let find = child.id_find(id);
             
-   //          match find {
-   //             Some(_) => { return find; },
-   //             None => (),
-   //          }
-   //       }
-   //    }
+            match find {
+               Some(_) => { return find; },
+               None => (),
+            }
+         }
+      }
       
-   //    None
-   // }
+      None
+   }
    
    /// Takes local Formatter, current indentation depth, and whether should
    /// output pretty, writes to the Formatter, and returns the Formatter.

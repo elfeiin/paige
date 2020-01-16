@@ -3,7 +3,7 @@ use super::*;
 /// The Page struct.
 /// Stores a list of nested HTML elements.
 pub struct Page {
-   children: Vec<El>,
+   pub children: Vec<El>,
 }
 
 impl Page {
@@ -20,20 +20,21 @@ impl Page {
       self
    }
    
-   // pub fn id_find(&self, id: &str) -> Option<&El> {
+   /// Allows for finding a child element by its id attribute.
+   pub fn id_find(&self, id: &str) -> Option<&El> {
       
-   //    for child in self.children.iter() {
+      for child in self.children.iter() {
          
-   //       let find = child.id_find(id);
+         let find = child.id_find(id);
          
-   //       match find {
-   //          Some(_) => { return find; },
-   //          None => (),
-   //       }
-   //    }
+         match find {
+            Some(_) => { return find; },
+            None => (),
+         }
+      }
       
-   //    None
-   // }
+      None
+   }
    
    /// Formats the Page for display or storage. Automatically
    /// prepends '<!DOCTYPE HTML> to the beginning of the file.
