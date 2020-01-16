@@ -83,17 +83,12 @@ fn base_page() -> Page {
             .attributes(&[
                Attr::Charset("UTF-8".into()),
             ]),
-            Tag::Style.content(&[
-               css(),
-            ])
+            Tag::Style.content(&[css()])
          ]),
          Tag::Body
          .content(&[
             nav(),
-            Tag::Div
-            .attributes(&[
-               Attr::Id("main".into()),
-            ]),
+            Tag::Div.attributes(&[Attr::Id("main".into())]),
          ])
       ])
    ])
@@ -116,5 +111,5 @@ fn index() -> Page {
 }
 
 fn main() {
-	println!("{}", index().format(false));
+	println!("{}", index().format(true));
 }
