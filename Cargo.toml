@@ -1,6 +1,6 @@
 [package]
 name = "paige"
-version = "0.1.2"
+version = "1.0.0"
 authors = ["anyusernameworks <patlymlatun@gmail.com>"]
 edition = "2018"
 license-file = "./LICENSE"
