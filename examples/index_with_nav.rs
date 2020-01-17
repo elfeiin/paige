@@ -1,7 +1,8 @@
 use paige::*;
 
 fn css() -> El {
-   El::text("
+   El::text(
+      "
          * {
             margin: 0 0 0 0;
             background: #12121225;
@@ -27,26 +28,26 @@ fn css() -> El {
             border: none;
          }
 
-            #navigation {
-               margin: 1cm 0 0 2cm;
-               width: 14cm;
-               height: 1cm;
+         #navigation {
+            margin: 1cm 0 0 2cm;
+            width: 14cm;
+            height: 1cm;
+         }
+         
+            a {
+               border: none;
             }
-            
-               a {
-                  border: none;
-               }
-            
-            #main {
-               margin: 1cm 1.5cm 1.5cm 2cm;
-               width: auto;
-               height: auto;
-            }
-            
+         
+         #main {
+            margin: 1cm 1.5cm 1.5cm 2cm;
+            width: auto;
+            height: auto;
+         }
+         
          .nav {
             line-height: 1cm;
-         }
-")
+         }",
+   )
 }
 
 fn nav() -> El {
